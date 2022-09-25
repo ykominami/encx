@@ -73,9 +73,9 @@ module Encx
     
     def convert( d , enc = nil )
       if enc
-        d.encode( enc , {:undef=>:replace, :invalid=>:replace, :replace => ""})
+        d.encode( enc , **{:undef=>:replace, :invalid=>:replace, :replace => ""})
       else
-        d.encode( @encoding , {:undef=>:replace, :invalid=>:replace, :replace => ""})
+        d.encode( @encoding , **{:undef=>:replace, :invalid=>:replace, :replace => ""})
       end
     end
 
