@@ -9,3 +9,5 @@
 /tmp/
 /vendor/
 .ruby-version
+*.gem
+
