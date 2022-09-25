@@ -1,30 +1,44 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'encx/version'
+# frozen_string_literal: true
+
+require_relative "lib/encx/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "encx"
-  spec.version       = Encx::VERSION
-  spec.licenses      = ['MIT']
-  spec.authors       = ["yasuo kominami"]
-  spec.email         = ["ykominami@gmail.com"]
+  spec.name = "encx"
+  spec.version = Encx::VERSION
+  spec.authors = ["ykominami"]
+  spec.email = ["ykominami@gmail.com"]
 
-  spec.summary       = %q{Encoding utility.}
-  spec.description   = %q{Encoding utility.}
-  spec.homepage      = ""
-  spec.required_ruby_version = '>= 2.7.6'
+  spec.summary = "Encoding utility."
+  spec.description = "Encoding utility."
+  spec.homepage = ""
+  spec.license = "MIT"
+  spec.required_ruby_version = ">= 2.7.6"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  # spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
+
+  # spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata["source_code_uri"] = "https://github.com/ykominami/encx"
+  # spec.metadata["changelog_uri"] = ""
+
+  # Specify which files should be added to the gem when it is released.
+  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
+  spec.files = Dir.chdir(__dir__) do
+    `git ls-files -z`.split("\x0").reject do |f|
+      (f == __FILE__) || f.match(%r{\A(?:(?:bin|test|spec|features)/|\.(?:git|travis|circleci)|appveyor)})
+    end
+  end
+  spec.bindir = "exe"
+  spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  if spec.respond_to?(:metadata)
-#    spec.metadata['allowed_push_host'] = "http://mygemserver.com"
-  end
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
+
+  # Uncomment to register a new dependency of your gem
+  # spec.add_dependency "example-gem", "~> 1.0"
+
+  # For more information and examples about making a new gem, check out our
+  # guide at: https://bundler.io/guides/creating_gem.html
 end
