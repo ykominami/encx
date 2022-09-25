@@ -6,6 +6,8 @@ describe Encx do
   end
 
   it 'does something useful' do
-    expect(false).to eq(true)
+    encode = Encoding::UTF_8
+    ret = Encx::Encx.new(Encoding::UTF_8)
+    expect(ret).to_not be_nil
   end
 end

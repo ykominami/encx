@@ -1,0 +1,32 @@
+name: Ruby
+
+on:
+  push:
+    branches:
+      - master
+
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ruby:
+          - 2.7
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - name: Run the default task
+      env:
+        EN_DEV_TOKEN: ${{ secrets.EN_DEV_TOKEN }}
+        EN_NOTESTORE_URL: ${{ secrets.EN_NOTESTORE_URL }}
+        EN_OAUTH_CONSUMER_KEY: ${{ secrets.EN_OAUTH_CONSUMER_KEY }}
+        EN_OAUTH_CONSUMER_SECRET: ${{ secrets.EN_OAUTH_CONSUMER_SECRET }}
+      run: bundle exec rake
