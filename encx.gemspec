@@ -13,18 +13,18 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Encoding utility.}
   spec.description   = %q{Encoding utility.}
   spec.homepage      = ""
+  spec.required_ruby_version = '>= 2.7.6'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.required_ruby_version = '>= 1.9'
 
   if spec.respond_to?(:metadata)
 #    spec.metadata['allowed_push_host'] = "http://mygemserver.com"
   end
 
-  spec.add_development_dependency "bundler", "~> 2.2.10"
-  spec.add_development_dependency "rake", "~> 12.3.3"
+  spec.add_development_dependency "bundler"
+  spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
 end
