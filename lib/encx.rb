@@ -70,7 +70,7 @@ module Encx
 
       ret2 != nil
     end
-    
+
     def convert( d , enc = nil )
       if enc
         d.encode( enc , **{:undef=>:replace, :invalid=>:replace, :replace => ""})
