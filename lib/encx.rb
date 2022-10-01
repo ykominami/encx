@@ -46,10 +46,9 @@ module Encx
     end
 
     def compare(l , hs)
-      puts "# Call compare"
+      # puts "# Call compare"
       ret2 = @encoding_ary.find{ |x|
         begin
-#          p hs[x]
           ret = hs[x].match(l)
           if ret
             ret = true
@@ -101,22 +100,21 @@ module Encx
       else
         ret2 = @encoding_ary.find{ |enc|
           ret , val = conv_env_sub( d , enc )
-          
           ret
         }
       end
       val
     end
-    
+
     def register_error( target  , item )
       @error_target_item_hs[target] ||= []
       @error_target_item_hs[target] << item
     end
-    
+
     def print_error_register_item
       @error_target_item_hs.each do |k,v|
         puts "##{k}"
-        v.each do |item| 
+        v.each do |item|
           puts "==#{item}"
         end
       end
