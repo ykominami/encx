@@ -10,4 +10,5 @@
 /vendor/
 .ruby-version
 *.gem
+*.code-workspace
 
